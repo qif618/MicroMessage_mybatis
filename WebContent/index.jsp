@@ -55,7 +55,7 @@
 		<h1>City Gallyer</h1>
 	</div>
 	<div id="nav">
-		London<br> Paris<br> Tokyo<br>
+		London<br> Paris<br> Tokyodd<br>
 	</div>
 	<div id="section">
 		<h2>London</h2>
