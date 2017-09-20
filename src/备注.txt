@@ -1,0 +1,9 @@
+1、复制项目。需右键项目，选properties,修改Web Project Setting为对应的项目名称。
+   如果还是不行，修改Servers项目下的dobase以及path为对应的项目名称。
+2、log4j.rootLogger=DEBUG,Console   输出的级别和输出的位置
+log4j.logger.org.apache.ibatis=ERROR 特定包下的特定级别
+log4j.appender.Console=org.apache.log4j.ConsoleAppender   配置控制台的类
+log4j.appender.Console.layout=org.apache.log4j.PatternLayout  //配置布局
+log4j.appender.Console.layout.ConversionPattern=%d [%t] %-5p [%c] - %m%n
+3、使用log4j需要引入log4j包以及log4j.protpertes文件放src目录下。
+4、xml中配置：如果是一对多，字段重名时(如id)，需重命名。

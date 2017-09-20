@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Message">
+
+  <resultMap type="com.lyf.model.Message" id="MessageResult">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="command" jdbcType="VARCHAR" property="command"/>
+    <result column="content" jdbcType="VARCHAR" property="content"/>
+    <result column="description" jdbcType="VARCHAR" property="description"/>
+  </resultMap>
+
+  <select id="queryMessageList" parameterType="com.lyf.model.Message"  resultMap="MessageResult">
+    select <include refid="columns" /> from message
+    <where>
+	    <if test="command != null and !command.trim().equals(&quot;&quot;)">
+	  		and command=#{command}
+	    </if>
+	   <if test="description != null and !description.trim().equals(&quot;&quot;)">
+	  		and description like '%' #{description} '%'
+	    </if>
+    </where>
+  </select>
+  <sql id="columns">id,description,command,content</sql>
+  <delete id="deleteOne" parameterType="int">
+  	delete from message where id=#{_parameter}
+  </delete>
+  <delete id="deleteBatch" parameterType="java.util.List">
+  		delete from message where id in(
+  			<foreach collection="list" item="item" separator=",">
+  				#{item}
+  			</foreach>
+  		)
+  </delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
